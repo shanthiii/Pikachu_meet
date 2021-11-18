@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sign-Up</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    </head>
+    <body style="background-image: url('https://images.unsplash.com/photo-1579546929662-711aa81148cf?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y29sb3JmdWwlMjBiYWNrZ3JvdW5kfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80'); background-repeat: no-repeat; background-size: cover;">
+        
+        <center>
+            <div>
+                <div class="panel panel-default" style="margin-top: 150px; width: 500px;">
+                    <img src="https://img.flaticon.com/icons/png/512/1752/1752772.png?size=1200x630f&pad=10,10,10,10&ext=png&bg=FFFFFFFF" alt="image_icon" class="rounded" width="300px" height="150px" style="margin-bottom: 9px; border-radius: 150px; margin-top: 15px;">
+                    <h2 style="font-family: Comic Sans MS;"><b>Pikachu Meet</b></h2>
+                    <form method="POST" action="/register">
+                        <div class="input-group mb-3" style="margin-bottom: 10px; width: 80%;">
+                            <input class="form-control" id="Name" name="name" type="text" placeholder="Name" required>
+                            <input class="form-control" id="Email" name="email" type="email" placeholder="Email" required>
+                            <input class="form-control" id="Username" name="username" type="text" pattern ="^(?=[a-zA-Z0-9._]{8,20}$)(?!.*[_.]{2})[^_.].*[^_.]$" placeholder="Username" required>
+                            <input class="form-control" id="Password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" type="password" placeholder="Password" required>
+                            
+                        </div>
+                        <div class="form-check">
+                            <input type="submit" name="Create_acc" class="btn btn-success btn-block" value="Create account" style="width: 60%;  margin-top: 20px;margin-bottom: 20px;">
+                        </div>
+                        <div style="margin-bottom: 20px;">
+                            <small>
+                                Have an account?
+                                <a href = "/login">Sign In</a>
+                            </small>
+                        </div>
+                    </form>
+                    
+                    
+                </div>
+            </div>
+        </center>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        
+    </body>
+</html>
