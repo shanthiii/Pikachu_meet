@@ -1,27 +1,33 @@
 # Pikachu_meet
-Pikachu meet is a video conferencing application using HTML, CSS, JavaScript, Node.js, Express.js, Peerjs, Socket.io, ejs, uuid, mysql, npm and nodemon. It is a Social Networking digital communication web application that provides video chat between computers, tablets and mobile devices through a web browser.
-## Installation of libraries
-### Initialize npm (node package manager)
-> npm init -y
----
-### Install expressJs, ejs, socket.io, uuid, nodemon and mysql library
-> npm i express ejs socket.io uuid nodemon mysql
----
-Install peerJS library
-> npm i -g peer
----
-_Open the terminal_
----
-**Start the nodejs server**
----
-> npm run devStart
----
-_Open another bash terminal to start Peer server_
----
-**Start the peerjs server in port 3001**
----
-> peerjs --port 3001
----
-***Design***
----
+
+Pikachu meet is a video conferencing application using HTML, CSS, JavaScript, Node.js, Express.js, PeerJS, Socket.io, EJS, uuid, mysql, npm and nodemon. It is a social networking digital communication web application that provides video chat between computers, tablets and mobile devices through a web browser.
+
+## Get started
+
+- Clone the repository
+
+```console
+git clone https://github.com/shanthiii/Pikachu_meet.git
+```
+
+- Install dependencies
+
+```console
+npm i -g peer
+npm i
+```
+
+- Start server
+  - Back-end server in one terminal
+    ```console
+    npm run devStart
+    ```
+  - WebRTC server in another terminal
+    ```console
+    peerjs --port 3001
+    ```
+- [Navigate to localhost on port 3000 in browser](http://localhost:3000)
+
+### Design
+
 ![Flowchart showing connections of webpages](flowchart.png)
