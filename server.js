@@ -67,7 +67,7 @@ app.post('/login', (req, res) => {
             
         }
         else{
-            message="Please enter correct credentials"
+            // message="Please enter correct credentials"
             res.redirect(`/login`)
         }
         
@@ -138,13 +138,12 @@ io.on('connection', socket => {
   socket.on('join-room', (roomId, userId) => {
     socket.join(roomId)
     io.to(roomId).emit('new-user', 'username');
-
-    
-
-    console.log("participants",io.sockets.server.eio.clientsCount);
+    // console.log("participants");
     socket.to(roomId).emit('user-connected', userId)
-    io.to(roomId).emit('participants', io.sockets.server.eio.clientsCount)
     
+    socket.on('participant', (number) => {
+        io.to(roomId).emit('participants', number)
+    })
     socket.on('message', (message, Name) => {
         io.to(roomId).emit('createMessage', message, Name);
     }); 

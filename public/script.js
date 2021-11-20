@@ -11,11 +11,10 @@ navigator.mediaDevices.getUserMedia({
     audio: true
 }).then(stream => {
   myPeer = new Peer(undefined, {
-      // host: '/',
-      host: 'ed30-183-82-154-211.ngrok.io',
-      // path: '6531-183-82-157-189.ngrok.io',
+    // change host part based on the ngrok generated host part for peer server
+    // if the application is running on localhost, host: '/' and port: 3001
+      host: '2d3d-2409-4070-2d42-28ca-fd8e-36b8-651-7af7.ngrok.io',
       port: '443',
-      // port: '3001',
       secure: true
 })
 myVideoStream = stream;
@@ -35,8 +34,9 @@ myPeer.on('call', call => {
     })
 })
 socket.on('user-connected', userId => {
-    console.log("new user connected", userId)
-    connectToNewUser(userId, stream)
+    console.log("new user connected", userId);
+    connectToNewUser(userId, stream);
+    socket.emit('participant', parseInt(document.getElementById('parti').innerHTML)+1)
 })
 
 let text = $("input");
@@ -69,8 +69,7 @@ socket.on("put", text => {
   document.getElementById('random').innerHTML = text;
 })
 
-function show_hide(){
-  console.log("hello! clicked me!?");
+function chat_window(){
   var x = document.getElementById("righty");
   x.style.display = "none";
   var x = document.getElementById("right");
@@ -78,7 +77,7 @@ function show_hide(){
   
 }
 
-function show__hide(){
+function participants_window(){
   var x = document.getElementById("right");
   x.style.display = "none";
   var x = document.getElementById("righty");
@@ -98,7 +97,6 @@ function connectToNewUser(userId, stream) {
 
   peers[userId] = call
 }
-
 function addVideoStream(video, stream) {
   video.srcObject = stream
   video.addEventListener('loadedmetadata', () => {
@@ -106,15 +104,10 @@ function addVideoStream(video, stream) {
   })
   videoGrid.append(video)
 }
-
-
-
 const scrollToBottom = () => {
   var d = $('.main__chat_window');
   d.scrollTop(d.prop("scrollHeight"));
 }
-
-
 const muteUnmute = () => {
   const enabled = myVideoStream.getAudioTracks()[0].enabled;
   if (enabled) {
@@ -125,7 +118,6 @@ const muteUnmute = () => {
     myVideoStream.getAudioTracks()[0].enabled = true;
   }
 }
-
 const playStop = () => {
   console.log('object')
   let enabled = myVideoStream.getVideoTracks()[0].enabled;
@@ -137,7 +129,6 @@ const playStop = () => {
     myVideoStream.getVideoTracks()[0].enabled = true;
   }
 }
-
 const setMuteButton = () => {
   const html = `
     <i class="fas fa-microphone"></i>
@@ -153,7 +144,6 @@ const setUnmuteButton = () => {
   `
   document.querySelector('.main__mute_button').innerHTML = html;
 }
-
 const setStopVideo = () => {
   const html = `
     <i class="fas fa-video"></i>
@@ -161,7 +151,6 @@ const setStopVideo = () => {
   `
   document.querySelector('.main__video_button').innerHTML = html;
 }
-
 const setPlayVideo = () => {
   const html = `
   <i class="stop fas fa-video-slash"></i>
@@ -169,4 +158,3 @@ const setPlayVideo = () => {
   `
   document.querySelector('.main__video_button').innerHTML = html;
 }
-
